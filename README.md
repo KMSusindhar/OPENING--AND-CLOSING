@@ -28,50 +28,62 @@ Use Closing operation
 ### NAME : Susindhar K M
 ### REF NO : 212223040218
 ```
-# Import libraries
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Read image in grayscale
-image = cv2.imread("rose.png", 0)
+image = cv2.imread("Italy P1.jpg", 0)
 
-# Create structuring element (kernel)
-kernel = np.ones((5,5), np.uint8)
+if image is None:
+    print("Image not found!")
+else:
+    plt.imshow(image, cmap='gray')
+    plt.title("Original Image")
+    plt.axis("off")
+    plt.show()
 
-# ---------------- OPENING ----------------
+
+# Create structuring element
+kernel = np.ones((5, 5), np.uint8)
+
+# Perform Opening
 opening = cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel)
 
-# ---------------- CLOSING ----------------
+# Display output
+plt.imshow(opening, cmap='gray')
+plt.title("Opening Image")
+plt.axis("off")
+plt.show()
+
+
+# Create structuring element
+kernel = np.ones((5, 5), np.uint8)
+
+# Perform Closing
 closing = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
 
-# ---------------- DISPLAY OUTPUT ----------------
-titles = ["Original Image", "Opening", "Closing"]
-images = [image, opening, closing]
-
-plt.figure(figsize=(10,5))
-
-for i in range(3):
-    plt.subplot(1,3,i+1)
-    plt.imshow(images[i], cmap='gray')
-    plt.title(titles[i])
-    plt.axis("off")
-
-plt.tight_layout()
+# Display output
+plt.imshow(closing, cmap='gray')
+plt.title("Closing Image")
+plt.axis("off")
 plt.show()
+
+
 ```
 ## Output:
 
 ### Display the input Image
-<img width="418" height="581" alt="Screenshot 2026-03-26 143126" src="https://github.com/user-attachments/assets/3ffe377c-b997-4106-a8b6-f3a8675affed" />
+<img width="761" height="455" alt="image" src="https://github.com/user-attachments/assets/42ba8b52-92b1-4dc5-a76b-a50927536e9f" />
+
 
 
 ### Display the result of Opening
-<img width="414" height="581" alt="Screenshot 2026-03-26 143132" src="https://github.com/user-attachments/assets/95092760-ed7a-4dd6-94c4-3d475ca4080a" />
+<img width="872" height="446" alt="image" src="https://github.com/user-attachments/assets/6d1bd030-1c12-44f9-8e2a-4a22c583a7eb" />
 
 
 ### Display the result of Closing
-<img width="413" height="579" alt="Screenshot 2026-03-26 143138" src="https://github.com/user-attachments/assets/4828c7f2-7370-4913-861d-120c204d267d" />
+<img width="764" height="448" alt="image" src="https://github.com/user-attachments/assets/3101e903-8b06-49d4-98b6-f456647ffd9d" />
 
 
 ## Result
